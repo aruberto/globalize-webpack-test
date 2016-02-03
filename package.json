@@ -4,7 +4,9 @@
   "description": "Testing Globalize Webpack Plugin with a more complex scenario",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf lib",
+    "build": "npm run clean && webpack",
+    "start": "node server.js --dev"
   },
   "repository": {
     "type": "git",
