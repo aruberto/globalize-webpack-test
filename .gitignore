@@ -34,3 +34,4 @@ node_modules
 
 # Build directories
 lib
+.tmp-globalize-webpack

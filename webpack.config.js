@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const GlobalizePlugin = require('globalize-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const parseArgs = require('minimist');
 
@@ -25,9 +26,16 @@ const PLUGINS = [
   new webpack.DefinePlugin(GLOBALS),
   new HtmlWebpackPlugin({
     title: 'Globalize Webpack Test',
-    template: 'handlebars!' + path.join(__dirname, 'src', 'index.hbs'),
+    template: path.join(__dirname, 'src', 'index.html'),
     favicon: path.join(__dirname, 'src', 'favicon.ico'),
     inject: false
+  }),
+  new GlobalizePlugin({
+    production: !DEV,
+    developmentLocale: 'en',
+    supportedLocales: ['en', 'en-CA', 'fr-CA'],
+    messages: 'messages/[locale].json',
+    output: 'i18n/[locale].[hash].js'
   })
 ];
 const DEV_PLUGINS = [
@@ -38,6 +46,7 @@ const PROD_PLUGINS = [
   new ExtractTextPlugin('main-[contenthash].css'),
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
+  new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js'),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: VERBOSE
@@ -70,9 +79,22 @@ const SASS_LOADERS = [
   'style',
   `css?modules${DEV ? '&localIdentName=[path]---[local]' : ''}!postcss!sass`
 ];
+const mainEntry = path.join(__dirname, 'src');
 
 module.exports = {
-  entry: ENTRY_MIDDLEWARE.concat(path.join(__dirname, 'src')),
+  entry: DEV ? ENTRY_MIDDLEWARE.concat(mainEntry) : {
+    main: ENTRY_MIDDLEWARE.concat(mainEntry),
+    vendor: [
+      'globalize',
+      'globalize/dist/globalize-runtime/number',
+      'globalize/dist/globalize-runtime/plural',
+      'globalize/dist/globalize-runtime/message',
+      'globalize/dist/globalize-runtime/currency',
+      'globalize/dist/globalize-runtime/date',
+      'globalize/dist/globalize-runtime/relative-time',
+      'globalize/dist/globalize-runtime/unit'
+    ]
+  },
 
   output: {
     path: path.join(__dirname, 'lib'),
