@@ -7,6 +7,9 @@ import './styles.scss';
 import DatePage from './components/date';
 import NumberPage from './components/number';
 import CurrencyPage from './components/currency';
+import PluralPage from './components/plural';
+import RelativeTimePage from './components/relative-time';
+import UnitPage from './components/unit';
 
 const history = createHashHistory();
 
@@ -23,6 +26,12 @@ class Navbar extends Component {
         <Link to='/number'>Number</Link>
         &nbsp;|&nbsp;
         <Link to='/currency'>Currency</Link>
+        &nbsp;|&nbsp;
+        <Link to='/plural'>Plural</Link>
+        &nbsp;|&nbsp;
+        <Link to='/relative-time'>Relative Time</Link>
+        &nbsp;|&nbsp;
+        <Link to='/unit'>Unit</Link>
         <hr/>
         {this.props.children}
       </div>
@@ -38,6 +47,9 @@ class App extends Component {
           <Route component={DatePage} path='date'/>
           <Route component={NumberPage} path='number'/>
           <Route component={CurrencyPage} path='currency'/>
+          <Route component={PluralPage} path='plural'/>
+          <Route component={RelativeTimePage} path='relative-time'/>
+          <Route component={UnitPage} path='unit'/>
         </Route>
       </Router>
     );
