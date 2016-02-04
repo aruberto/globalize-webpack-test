@@ -4,9 +4,9 @@
   "description": "Testing Globalize Webpack Plugin with a more complex scenario",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf lib",
+    "clean": "rimraf lib .tmp-globalize-webpack",
     "build": "npm run clean && webpack",
-    "start": "node server.js --dev"
+    "start": "npm run clean && node server.js --dev"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "dependencies": {
     "babel-runtime": "^6.3.19",
     "cldr-data": "^28.0.3",
+    "foundation-sites": "^6.1.2",
     "globalize": "^1.1.0",
     "history": "^1.17.0",
     "react": "^0.14.7",
