@@ -32,6 +32,8 @@ class Navbar extends Component {
         &nbsp;|&nbsp;
         <Link to='/relative-time'>Relative Time</Link>
         &nbsp;|&nbsp;
+        <Link to='/unit'>Unit</Link>
+        &nbsp;|&nbsp;
         <Link to='/message'>Message</Link>
         <hr/>
         {this.props.children}
