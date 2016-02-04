@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import Globalize from 'globalize';
 
-const currency = 'GBP';
-
-const basicCurrencyFormatter = Globalize.currencyFormatter(currency);
-const accountingFormatter = Globalize.currencyFormatter(currency, {style: 'accounting'});
-const nameFormatter = Globalize.currencyFormatter(currency, {style: 'name'});
-const codeFormatter = Globalize.currencyFormatter(currency, {style: 'code'});
-const roundUpFormatter = Globalize.currencyFormatter(currency, {rounf: 'ceil'});
+const basicCurrencyFormatter = Globalize.currencyFormatter('GBP');
+const accountingFormatter = Globalize.currencyFormatter('GBP', {style: 'accounting'});
+const nameFormatter = Globalize.currencyFormatter('GBP', {style: 'name'});
+const codeFormatter = Globalize.currencyFormatter('GBP', {style: 'code'});
+const roundUpFormatter = Globalize.currencyFormatter('GBP', {rounf: 'ceil'});
 
 export default class CurrencyPage extends Component {
   render() {
