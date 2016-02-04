@@ -47,11 +47,13 @@ const PROD_PLUGINS = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js'),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: VERBOSE
-    }
-  }),
+
+  // new webpack.optimize.UglifyJsPlugin({
+  //   compress: {
+  //     warnings: VERBOSE
+  //   }
+  // }),
+
   new webpack.optimize.AggressiveMergingPlugin()
 ];
 const ENTRY_MIDDLEWARE = DEV ? ['webpack-hot-middleware/client'] : [];
