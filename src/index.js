@@ -10,6 +10,7 @@ import CurrencyPage from './components/currency';
 import PluralPage from './components/plural';
 import RelativeTimePage from './components/relative-time';
 import UnitPage from './components/unit';
+import MessagePage from './components/message';
 
 const history = createHashHistory();
 
@@ -32,6 +33,8 @@ class Navbar extends Component {
         <Link to='/relative-time'>Relative Time</Link>
         &nbsp;|&nbsp;
         <Link to='/unit'>Unit</Link>
+        &nbsp;|&nbsp;
+        <Link to='/message'>Message</Link>
         <hr/>
         {this.props.children}
       </div>
@@ -50,6 +53,7 @@ class App extends Component {
           <Route component={PluralPage} path='plural'/>
           <Route component={RelativeTimePage} path='relative-time'/>
           <Route component={UnitPage} path='unit'/>
+          <Route component={MessagePage} path='message'/>
         </Route>
       </Router>
     );

@@ -1,0 +1,14 @@
+{
+  "en": {
+    "province": "State",
+    "region": "County",
+    "postalCode": "Zip Code",
+    "task": [
+			"{count, plural,",
+      "    =0 {You have no remaining tasks}",
+			"    =1 {You have one remaining task}",
+			" other {You have # remaining tasks}",
+			"}."
+		]
+  }
+}

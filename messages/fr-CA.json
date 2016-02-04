@@ -1,0 +1,14 @@
+{
+  "fr-CA": {
+    "province": "Province",
+    "region": "Région",
+    "postalCode": "Code Postal",
+    "task": [
+      "{count, plural,",
+      "    =0 {Vous avez pas d'autres tâches}",
+			"    =1 {Vous avez une tâche restante}",
+			" other {Vous avez # tâches restantes}",
+			"}."
+		]
+  }
+}
