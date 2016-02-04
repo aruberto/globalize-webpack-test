@@ -35,7 +35,7 @@ const PLUGINS = [
     developmentLocale: 'en',
     supportedLocales: ['en', 'en-CA', 'fr-CA'],
     messages: 'messages/[locale].json',
-    output: 'i18n/[locale].[hash].js'
+    output: 'i18n/[locale].[' + (DEV ? 'hash' : 'chunkhash') + '].js'
   })
 ];
 const DEV_PLUGINS = [
@@ -46,14 +46,15 @@ const PROD_PLUGINS = [
   new ExtractTextPlugin('main-[contenthash].css'),
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js'),
-
-  // new webpack.optimize.UglifyJsPlugin({
-  //   compress: {
-  //     warnings: VERBOSE
-  //   }
-  // }),
-
+  new webpack.optimize.CommonsChunkPlugin(
+    'vendor',
+    'vendor.[' + (DEV ? 'hash' : 'chunkhash') + '].js'
+  ),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: VERBOSE
+    }
+  }),
   new webpack.optimize.AggressiveMergingPlugin()
 ];
 const ENTRY_MIDDLEWARE = DEV ? ['webpack-hot-middleware/client'] : [];
@@ -100,7 +101,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'lib'),
-    filename: '[name]-[hash].js',
+    filename: '[name]-[' + (DEV ? 'hash' : 'chunkhash') + '].js',
     publicPath: '/globalize-webpack-test'
   },
 
