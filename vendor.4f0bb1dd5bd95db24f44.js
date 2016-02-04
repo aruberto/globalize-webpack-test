@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"1":"main","2":"globalize-compiled-data-fr-CA","3":"globalize-compiled-data-en-CA","4":"globalize-compiled-data-en"}[chunkId]||chunkId) + "-" + "41299ccdbd5dd090f276" + ".js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"1":"main","2":"globalize-compiled-data-fr-CA","3":"globalize-compiled-data-en-CA","4":"globalize-compiled-data-en"}[chunkId]||chunkId) + "-" + "4f0bb1dd5bd95db24f44" + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -115,7 +115,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Globalize Runtime v1.1.0
+	 * Globalize Runtime v1.1.1
 	 *
 	 * http://github.com/jquery/globalize
 	 *
@@ -123,10 +123,10 @@
 	 * Released under the MIT license
 	 * http://jquery.org/license
 	 *
-	 * Date: 2016-01-20T17:24Z
+	 * Date: 2016-02-04T12:01Z
 	 */
 	/*!
-	 * Globalize Runtime v1.1.0 2016-01-20T17:24Z Released under the MIT license
+	 * Globalize Runtime v1.1.1 2016-02-04T12:01Z Released under the MIT license
 	 * http://git.io/TrdQbw
 	 */
 	(function( root, factory ) {
@@ -804,7 +804,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Globalize Runtime v1.1.0
+	 * Globalize Runtime v1.1.1
 	 *
 	 * http://github.com/jquery/globalize
 	 *
@@ -812,10 +812,10 @@
 	 * Released under the MIT license
 	 * http://jquery.org/license
 	 *
-	 * Date: 2016-01-20T17:24Z
+	 * Date: 2016-02-04T12:01Z
 	 */
 	/*!
-	 * Globalize Runtime v1.1.0 2016-01-20T17:24Z Released under the MIT license
+	 * Globalize Runtime v1.1.1 2016-02-04T12:01Z Released under the MIT license
 	 * http://git.io/TrdQbw
 	 */
 	(function( root, factory ) {
@@ -897,7 +897,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Globalize Runtime v1.1.0
+	 * Globalize Runtime v1.1.1
 	 *
 	 * http://github.com/jquery/globalize
 	 *
@@ -905,10 +905,10 @@
 	 * Released under the MIT license
 	 * http://jquery.org/license
 	 *
-	 * Date: 2016-01-20T17:24Z
+	 * Date: 2016-02-04T12:01Z
 	 */
 	/*!
-	 * Globalize Runtime v1.1.0 2016-01-20T17:24Z Released under the MIT license
+	 * Globalize Runtime v1.1.1 2016-02-04T12:01Z Released under the MIT license
 	 * http://git.io/TrdQbw
 	 */
 	(function( root, factory ) {
@@ -1140,7 +1140,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Globalize Runtime v1.1.0
+	 * Globalize Runtime v1.1.1
 	 *
 	 * http://github.com/jquery/globalize
 	 *
@@ -1148,10 +1148,10 @@
 	 * Released under the MIT license
 	 * http://jquery.org/license
 	 *
-	 * Date: 2016-01-20T17:24Z
+	 * Date: 2016-02-04T12:01Z
 	 */
 	/*!
-	 * Globalize Runtime v1.1.0 2016-01-20T17:24Z Released under the MIT license
+	 * Globalize Runtime v1.1.1 2016-02-04T12:01Z Released under the MIT license
 	 * http://git.io/TrdQbw
 	 */
 	(function( root, factory ) {
@@ -1266,7 +1266,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Globalize Runtime v1.1.0
+	 * Globalize Runtime v1.1.1
 	 *
 	 * http://github.com/jquery/globalize
 	 *
@@ -1274,10 +1274,10 @@
 	 * Released under the MIT license
 	 * http://jquery.org/license
 	 *
-	 * Date: 2016-01-20T17:24Z
+	 * Date: 2016-02-04T12:01Z
 	 */
 	/*!
-	 * Globalize Runtime v1.1.0 2016-01-20T17:24Z Released under the MIT license
+	 * Globalize Runtime v1.1.1 2016-02-04T12:01Z Released under the MIT license
 	 * http://git.io/TrdQbw
 	 */
 	(function( root, factory ) {
@@ -1823,7 +1823,7 @@
 	 * ref: http://www.unicode.org/reports/tr35/tr35-dates.html#Date_Format_Patterns
 	 */
 	var dateParse = function( value, tokens, properties ) {
-		var amPm, day, daysOfYear, era, hour, hour12, timezoneOffset, valid,
+		var amPm, day, daysOfYear, month, era, hour, hour12, timezoneOffset, valid,
 			YEAR = 0,
 			MONTH = 1,
 			DAY = 2,
@@ -1907,7 +1907,10 @@
 					if ( outOfRange( value, 1, 12 ) ) {
 						return false;
 					}
-					dateSetMonth( date, value - 1 );
+
+					// Setting the month later so that we have the correct year and can determine
+					// the correct last day of February in case of leap year.
+					month = value;
 					truncateAt.push( MONTH );
 					break;
 
@@ -2047,6 +2050,10 @@
 
 			// 1 BC = year 0
 			date.setFullYear( date.getFullYear() * -1 + 1 );
+		}
+
+		if ( month !== undefined ) {
+			dateSetMonth( date, month - 1 );
 		}
 
 		if ( day !== undefined ) {
@@ -2566,7 +2573,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Globalize Runtime v1.1.0
+	 * Globalize Runtime v1.1.1
 	 *
 	 * http://github.com/jquery/globalize
 	 *
@@ -2574,10 +2581,10 @@
 	 * Released under the MIT license
 	 * http://jquery.org/license
 	 *
-	 * Date: 2016-01-20T17:24Z
+	 * Date: 2016-02-04T12:01Z
 	 */
 	/*!
-	 * Globalize Runtime v1.1.0 2016-01-20T17:24Z Released under the MIT license
+	 * Globalize Runtime v1.1.1 2016-02-04T12:01Z Released under the MIT license
 	 * http://git.io/TrdQbw
 	 */
 	(function( root, factory ) {
@@ -2689,7 +2696,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Globalize Runtime v1.1.0
+	 * Globalize Runtime v1.1.1
 	 *
 	 * http://github.com/jquery/globalize
 	 *
@@ -2697,10 +2704,10 @@
 	 * Released under the MIT license
 	 * http://jquery.org/license
 	 *
-	 * Date: 2016-01-20T17:24Z
+	 * Date: 2016-02-04T12:01Z
 	 */
 	/*!
-	 * Globalize Runtime v1.1.0 2016-01-20T17:24Z Released under the MIT license
+	 * Globalize Runtime v1.1.1 2016-02-04T12:01Z Released under the MIT license
 	 * http://git.io/TrdQbw
 	 */
 	(function( root, factory ) {
@@ -2812,7 +2819,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Globalize Runtime v1.1.0
+	 * Globalize Runtime v1.1.1
 	 *
 	 * http://github.com/jquery/globalize
 	 *
@@ -2820,10 +2827,10 @@
 	 * Released under the MIT license
 	 * http://jquery.org/license
 	 *
-	 * Date: 2016-01-20T17:24Z
+	 * Date: 2016-02-04T12:01Z
 	 */
 	/*!
-	 * Globalize Runtime v1.1.0 2016-01-20T17:24Z Released under the MIT license
+	 * Globalize Runtime v1.1.1 2016-02-04T12:01Z Released under the MIT license
 	 * http://git.io/TrdQbw
 	 */
 	(function( root, factory ) {
@@ -2928,6 +2935,7 @@
 
 	Globalize.unitFormatter =
 	Globalize.prototype.unitFormatter = function( unit, options ) {
+		options = options || {};
 		return Globalize[ runtimeKey( "unitFormatter", this._locale, [ unit, options ] ) ];
 	};
 
