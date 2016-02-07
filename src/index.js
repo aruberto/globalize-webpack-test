@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Link} from 'react-router';
-import {createHashHistory} from 'history';
+import { Router, Route, Link } from 'react-router';
+import { createHashHistory } from 'history';
 
 import './styles.scss';
 import DatePage from './components/date';
@@ -16,25 +16,25 @@ const history = createHashHistory();
 
 class Navbar extends Component {
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
   };
 
   render() {
     return (
       <div>
-        <Link to='/date'>Date</Link>
+        <Link to="/date">Date</Link>
         &nbsp;|&nbsp;
-        <Link to='/number'>Number</Link>
+        <Link to="/number">Number</Link>
         &nbsp;|&nbsp;
-        <Link to='/currency'>Currency</Link>
+        <Link to="/currency">Currency</Link>
         &nbsp;|&nbsp;
-        <Link to='/plural'>Plural</Link>
+        <Link to="/plural">Plural</Link>
         &nbsp;|&nbsp;
-        <Link to='/relative-time'>Relative Time</Link>
+        <Link to="/relative-time">Relative Time</Link>
         &nbsp;|&nbsp;
-        <Link to='/unit'>Unit</Link>
+        <Link to="/unit">Unit</Link>
         &nbsp;|&nbsp;
-        <Link to='/message'>Message</Link>
+        <Link to="/message">Message</Link>
         <hr/>
         {this.props.children}
       </div>
@@ -46,14 +46,14 @@ class App extends Component {
   render() {
     return (
       <Router history={history}>
-        <Route component={Navbar} path='/'>
-          <Route component={DatePage} path='date'/>
-          <Route component={NumberPage} path='number'/>
-          <Route component={CurrencyPage} path='currency'/>
-          <Route component={PluralPage} path='plural'/>
-          <Route component={RelativeTimePage} path='relative-time'/>
-          <Route component={UnitPage} path='unit'/>
-          <Route component={MessagePage} path='message'/>
+        <Route component={Navbar} path="/">
+          <Route component={DatePage} path="date"/>
+          <Route component={NumberPage} path="number"/>
+          <Route component={CurrencyPage} path="currency"/>
+          <Route component={PluralPage} path="plural"/>
+          <Route component={RelativeTimePage} path="relative-time"/>
+          <Route component={UnitPage} path="unit"/>
+          <Route component={MessagePage} path="message"/>
         </Route>
       </Router>
     );

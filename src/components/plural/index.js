@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Globalize from 'globalize';
 
 const basicPluralFormatter = Globalize.pluralGenerator();
-const ordinalPluralFormatter = Globalize.pluralGenerator({type: 'ordinal'});
+const ordinalPluralFormatter = Globalize.pluralGenerator({ type: 'ordinal' });
 
 export default class PluralPage extends Component {
   render() {

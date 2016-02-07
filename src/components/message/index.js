@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Globalize from 'globalize';
 
 const provinceFormatter = Globalize.messageFormatter('province');
@@ -20,9 +20,9 @@ export default class MessagePage extends Component {
         <br/>
         <div>
           <h5>Plural Messages</h5>
-          <div>0: {taskFormatter({count: 0})}</div>
-          <div>1: {taskFormatter({count: 1})}</div>
-          <div>2: {taskFormatter({count: 2})}</div>
+          <div>0: {taskFormatter({ count: 0 })}</div>
+          <div>1: {taskFormatter({ count: 1 })}</div>
+          <div>2: {taskFormatter({ count: 2 })}</div>
         </div>
       </div>
     );

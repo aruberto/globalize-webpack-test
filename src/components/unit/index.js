@@ -1,20 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Globalize from 'globalize';
 
 const secondFormatter = Globalize.unitFormatter('second');
-const secondShortFormatter = Globalize.unitFormatter('second', {form: 'short'});
-const secondNarrowFormatter = Globalize.unitFormatter('second', {form: 'narrow'});
+const secondShortFormatter = Globalize.unitFormatter('second', { form: 'short' });
+const secondNarrowFormatter = Globalize.unitFormatter('second', { form: 'narrow' });
 const mileFormatter = Globalize.unitFormatter('mile');
-const mileShortFormatter = Globalize.unitFormatter('mile', {form: 'short'});
-const mileNarrowFormatter = Globalize.unitFormatter('mile', {form: 'narrow'});
+const mileShortFormatter = Globalize.unitFormatter('mile', { form: 'short' });
+const mileNarrowFormatter = Globalize.unitFormatter('mile', { form: 'narrow' });
 const kilometerPerHourFormatter = Globalize.unitFormatter('kilometer-per-hour');
 const kilometerPerHourShortFormatter =
-  Globalize.unitFormatter('kilometer-per-hour', {form: 'short'});
+  Globalize.unitFormatter('kilometer-per-hour', { form: 'short' });
 const kilometerPerHourNarrowFormatter =
-  Globalize.unitFormatter('kilometer-per-hour', {form: 'narrow'});
+  Globalize.unitFormatter('kilometer-per-hour', { form: 'narrow' });
 const megabyteFormatter = Globalize.unitFormatter('megabyte');
-const megabyteShortFormatter = Globalize.unitFormatter('megabyte', {form: 'short'});
-const megabyteNarrowFormatter = Globalize.unitFormatter('megabyte', {form: 'narrow'});
+const megabyteShortFormatter = Globalize.unitFormatter('megabyte', { form: 'short' });
+const megabyteNarrowFormatter = Globalize.unitFormatter('megabyte', { form: 'narrow' });
 
 export default class UnitPage extends Component {
   render() {

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Globalize from 'globalize';
 
 const secondsRelativeTimeFormatter = Globalize.relativeTimeFormatter('second');

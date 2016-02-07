@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Globalize from 'globalize';
 
 const basicDateFormatter = Globalize.dateFormatter();
-const skeletonDateFormatter = Globalize.dateFormatter({skeleton: 'GyMMMd'});
-const mediumDateFormatter = Globalize.dateFormatter({date: 'medium'});
-const mediumTimeFormatter = Globalize.dateFormatter({time: 'medium'});
-const mediumDateTimeFormatter = Globalize.dateFormatter({datetime: 'medium'});
+const skeletonDateFormatter = Globalize.dateFormatter({ skeleton: 'GyMMMd' });
+const mediumDateFormatter = Globalize.dateFormatter({ date: 'medium' });
+const mediumTimeFormatter = Globalize.dateFormatter({ time: 'medium' });
+const mediumDateTimeFormatter = Globalize.dateFormatter({ datetime: 'medium' });
 
 export default class DatePage extends Component {
   handleClick = () => this.setState({});
@@ -22,7 +22,7 @@ export default class DatePage extends Component {
         <div>Medium Time: {mediumTimeFormatter(date)}</div>
         <div>Medium Date/Time: {mediumDateTimeFormatter(date)}</div>
         <br/>
-        <button onClick={this.handleClick} type='button'>Refresh</button>
+        <button onClick={this.handleClick} type="button">Refresh</button>
       </div>
     );
   }
